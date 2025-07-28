@@ -1,0 +1,46 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+void binarySrcArr(int arr[][3],int row,int col,int key){
+    int s=0;
+    int e= row*col-1;
+    int mid=s+(e-s)/2;
+    while (s<=e)
+    {
+        int rowindex=mid/col;
+        int colindex=mid%col;
+      if(arr[rowindex][colindex]==key){
+          cout<<"Found at "<<rowindex<<" "<<colindex;
+           return;
+      }
+      else if (arr[rowindex][colindex]>key){
+        e=mid-1;
+      }
+      else{
+        s=mid+1;
+      }
+      mid=s+(e-s)/2;
+
+    }
+    cout<<"Not Found key";
+        }
+
+int main(){
+    int arr[3][3]={{1,2,3},{3,4,5},{5,6,7}};
+    int row=3;
+    int col=3;
+
+        for(int i=0;i<3;i++){
+            for (int j=0;j<3;j++){
+    cout<<arr[i][j]<<" ";
+            }
+            cout<<endl;
+        } 
+
+    int key;
+    cout<<"Enter key :";
+    cin>>key;
+    
+    binarySrcArr(arr,row,col,key) ;      
+}
